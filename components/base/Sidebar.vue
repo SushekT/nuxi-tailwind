@@ -3,10 +3,11 @@
     <ul role="list" class="flex flex-1 flex-col gap-y-7">
       <li>
         <ul role="list" class="-mx-2 space-y-1">
-
+          
           <li v-for="item in navigation" :key="item.name">
-            <a v-if="!item.children" :href="item.href" :class="[item.current ? 'bg-gray-50 border-l-4 border-slate-600' : 'hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-gray-700']">
-              <Icon :name="item.icon" class="h-6 w-6 shrink-0 text-gray-400"/>
+            <p v-if="!props.showIconOnly && item.heading" class="p-3 mt-3 text-sm font-semibold">{{ item.heading }}</p>
+            <a v-if="!item.children" :href="item.href" :class="[item.current ? 'bg-white border-l-4 border-slate-600 text-blue-800 drop-shadow w-5/6 rounded-tr-full rounded-br-full' : 'hover:bg-gray-200', 'group flex gap-x-5 w-5/6 rounded-tr-full rounded-br-full p-3 text-lg leading-6 font-normal text-gray-700']">
+              <Icon :name="item.icon" class="h-6 w-6 shrink-0"/>
               <span v-if="!props.showIconOnly">{{ item.name }}</span>
             </a>
             <span v-else>
@@ -63,20 +64,22 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 
 const navigation = [
-  { name: 'Overview', href: '#', icon: 'ri:pie-chart-line', current: true },
-  {
-    name: 'Users Management',
-    icon: 'ri:group-line',
-    current: false,
-    children: [
-      { name: 'Add User', icon: 'ri:group-line', href: '#', current: false },
-      { name: 'Assign Permission', icon: 'ri:group-line', href: '#', current: false },
-    ],
-  },
-  { name: 'Product Management', href: '#', icon: 'ri:barcode-fill', current: false },
-  { name: 'Inventory Tracking', href: '#', icon: 'ri:list-check-3', current: false },
-  { name: 'Order Management', href: '#', icon: 'ri:shopping-cart-fill', current: false },
-  { name: 'Reports', href: '#', icon: 'ri:line-chart-line', current: false },
+  { name: 'Dashboard', href: '#', icon: 'ri:pie-chart-line', current: true, heading:'Home' },
+  { name: 'Transaction', href: '#', icon: 'ri:barcode-fill', current: false, heading:'General' },
+  // {
+  //   name: 'Premium Users',
+  //   icon: 'ri:group-line',
+  //   current: false,
+  //   heading: 'General',
+  //   children: [
+  //     { name: 'Add User', icon: 'ri:group-line', href: '#', current: false },
+  //     { name: 'Assign Permission', icon: 'ri:group-line', href: '#', current: false },
+  //   ],
+  // },
+  { name: 'Vouchers', href: '#', icon: 'ri:list-check-3', current: false },
+  { name: 'Monitors', href: '#', icon: 'ri:shopping-cart-fill', current: false },
+  { name: 'Tickets', href: '#', icon: 'ri:line-chart-line', current: false },
+  { name: 'Access Page', href: '#', icon: 'ri:line-chart-line', current: false },
 ]
 const props =  defineProps({
   showIconOnly: { type: Boolean, default: false },
