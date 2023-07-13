@@ -55,14 +55,20 @@
         <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true" />
 
         <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-          <div class="relative flex flex-1"></div>
+          <div class="relative flex flex-1">
+            <div>
+              <h1 class="hidden lg:block pt-8 pb-2 text-3xl">Good Morning, <span class="font-semibold">Admin</span></h1>
+              <p class="hidden lg:block text-lg">Performance summary & WIFI Manager</p>
+            </div>
+            
+          </div>
           <div class="flex items-center gap-x-4 lg:gap-x-6">
 
             <!-- Separator -->
             <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" />
 
             <!-- Profile dropdown -->
-            <Menu as="div" class="relative">
+            <Menu as="div">
               <MenuButton class="-m-1.5 flex items-center p-1.5">
                 <span class="sr-only">Open user menu</span>
                 <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">AJAY SHRESTHA</span>
@@ -80,10 +86,13 @@
         </div>
       </div>
 
-      <main class="py-10">
-        <div class="mx-4 sm:mx-2 lg:mx-12">
+      <main class="py-16">
+        <div>
+          <div class="mx-4 sm:mx-2 lg:mx-9">
           <slot />
         </div>
+        </div>
+        
       </main>
     </div>
   </div>
