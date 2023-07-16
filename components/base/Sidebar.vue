@@ -65,7 +65,8 @@ import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: 'ri:pie-chart-line', current: true, heading:'Home' },
-  { name: 'Transaction', href: '#', icon: 'ri:barcode-fill', current: false, heading:'General' },
+  { name: 'Premium Users', href: '#', icon: 'ri:user-star-line', current: false, heading:'General' },
+  { name: 'Transaction', href: '#', icon: 'mdi:tag-outline', current: false },
   // {
   //   name: 'Premium Users',
   //   icon: 'ri:group-line',
@@ -76,10 +77,10 @@ const navigation = [
   //     { name: 'Assign Permission', icon: 'ri:group-line', href: '#', current: false },
   //   ],
   // },
-  { name: 'Vouchers', href: '#', icon: 'ri:list-check-3', current: false },
-  { name: 'Monitors', href: '#', icon: 'ri:shopping-cart-fill', current: false },
-  { name: 'Tickets', href: '#', icon: 'ri:line-chart-line', current: false },
-  { name: 'Access Page', href: '#', icon: 'ri:line-chart-line', current: false },
+  { name: 'Vouchers', href: '#', icon: 'ri:user-star-line', current: false },
+  { name: 'Monitors', href: '#', icon: 'fe:laptop', current: false },
+  { name: 'Tickets', href: '#', icon: 'mdi:message-alert-outline', current: false },
+  { name: 'Access Page', href: '#', icon: 'ri:settings-2-line', current: false },
 ]
 const props =  defineProps({
   showIconOnly: { type: Boolean, default: false },
