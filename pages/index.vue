@@ -21,12 +21,12 @@
           </a>
         </nav>
       </div>
-      <div class="grid grid-cols-1  gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 my-8">
+      <div class="grid grid-cols-2  gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-8">
         <div v-for="obj in speed" :key="obj.title"
           class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-5 py-5 shadow-md focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
           <div class="min-w-0 flex-1">
             <a href="#" class="focus:outline-none">
-              <span class="absolute inset-0" aria-hidden="true" />
+              <span class="absolute inset-0" />
               <p class="text-sm font-normal text-center">{{ obj.title }}</p>
               <p class="text-4xl text-center font-semibold p-2">
                 <Icon :name="obj.icon" :class="['hover:text-gray-500', 'mr-1 h-15 w-15 font-light']" aria-hidden="true" />
@@ -57,23 +57,17 @@
               <p class="text-center text-sm">devices</p>
             </a>
           </div>
-
         </div>
-        <div v-for="obj in timeSpent" :key="obj.title"
-          class="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-5 py-5 shadow-md focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
-          <div class="min-w-0 flex-1">
-            <a href="#" class="focus:outline-none">
-              <span class="absolute inset-0" aria-hidden="true" />
-              <p class="text-md font-normal text-center">{{ obj.title }}</p>
-              <p class="text-4xl text-center font-semibold p-2">
-                <Icon :name="obj.icon" :class="['hover:text-gray-500', 'mr-1 font-light']" aria-hidden="true" />
-                {{ obj.number }}
-                <span class="text-sm font-medium">{{ obj.type }}</span>
-              </p>
-              <p class="text-center text-sm">devices</p>
-            </a>
+      </div>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 my-8">
+        <div class="container mx-auto px-4">
+          <div class="rounded-lg overflow-hidden shadow-lg sm:flex sm:shadow-none bg-white">
+            <div class="p-4 sm:w-2/3">
+              <h2 class="text-2xl font-semibold">Historical Usage</h2>
+              <p class="py-1 text-gray-500">Usage in the 3 Days, (America / New York)</p>
+              <canvas ref="chartCanvas" class="w-full" ></canvas>
+            </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -81,7 +75,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import useChart from '@/components/chart.js'
 
 const tabs = [
   { name: 'Overview', href: '#', current: true, icon: 'ri:list-check-3', },
@@ -99,7 +94,14 @@ const devices = [
   { title: 'Total Authorized Device', number: '1932', icon: 'material-symbols:computer' }
 ]
 
-const timeSpent = [
-{ title: 'Average Time Spent', number: '2m:35s', icon: 'ri:time-line' },
-]
+const chartCanvas = ref(null);
+const chartData = {
+  labels: ['Label 1', 'Label 2', 'Label 3'],
+  data: [10, 20, 30],
+};
+
+onMounted(() => {
+  useChart(chartData, chartCanvas);
+});
+
 </script>
